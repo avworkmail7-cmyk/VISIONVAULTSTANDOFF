@@ -4,17 +4,27 @@ import AddToHomeScreenBanner from '../../components/AddToHomeScreenBanner'
 import './LoginRegister.css'
 
 export default function LoginRegister() {
-  const { login, register } = useAuth()
+  const { login, register, authError } = useAuth()
   const [mode, setMode] = useState('login') // 'login' | 'register'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
+  const [submitting, setSubmitting] = useState(false)
+  const [localError, setLocalError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    if (mode === 'login') login(email, password)
-    else register(email, password, name || undefined)
-    window.location.hash = '#/app'
+    setSubmitting(true)
+    setLocalError('')
+    try {
+      if (mode === 'login') await login(email, password)
+      else await register(email, password, name || undefined)
+      window.location.hash = '#/app'
+    } catch (err) {
+      setLocalError(err?.message || 'Authentication failed.')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -39,6 +49,7 @@ export default function LoginRegister() {
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Display name"
                 autoComplete="name"
+                disabled={submitting}
               />
             </label>
           )}
@@ -52,6 +63,7 @@ export default function LoginRegister() {
               placeholder="you@example.com"
               required
               autoComplete="email"
+              disabled={submitting}
             />
           </label>
           <label className="login-register__label">
@@ -65,16 +77,19 @@ export default function LoginRegister() {
               required
               minLength={6}
               autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
+              disabled={submitting}
             />
           </label>
+          {(localError || authError) && <p className="login-register__error">{localError || authError}</p>}
           <button type="submit" className="login-register__submit">
-            {mode === 'login' ? 'Log in' : 'Create account'}
+            {submitting ? 'Please wait...' : mode === 'login' ? 'Log in' : 'Create account'}
           </button>
         </form>
 
         <button
           type="button"
           className="login-register__toggle"
+          disabled={submitting}
           onClick={() => setMode(mode === 'login' ? 'register' : 'login')}
         >
           {mode === 'login' ? "Don't have an account? Register" : 'Already have an account? Log in'}

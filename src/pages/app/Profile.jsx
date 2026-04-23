@@ -9,7 +9,7 @@ function maskEmail(email) {
 }
 
 export default function Profile() {
-  const { user, logout } = useAuth()
+  const { user, logout, goldBalance } = useAuth()
 
   return (
     <div className="profile">
@@ -22,6 +22,7 @@ export default function Profile() {
         <div className="profile__info">
           <span className="profile__name">{user?.name ?? 'User'}</span>
           <span className="profile__email">{maskEmail(user?.email)}</span>
+          <span className="profile__email">Gold: {goldBalance}</span>
         </div>
       </div>
 

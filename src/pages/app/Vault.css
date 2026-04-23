@@ -1,3 +1,16 @@
+.vault {
+  position: relative;
+  min-height: 70vh;
+  padding: 1.5rem 1rem 2rem;
+  background-image:
+    linear-gradient(rgba(8, 8, 16, 0.72), rgba(8, 8, 16, 0.82)),
+    url('/vision-vault-case-bg.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
 .vault__label {
   font-size: 0.7rem;
   letter-spacing: 0.1em;
@@ -21,7 +34,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 60vh;
+  min-height: 70vh;
   padding: 2rem 1rem;
 }
 

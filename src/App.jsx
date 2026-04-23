@@ -28,7 +28,7 @@ const VIEWPORT_DEFAULT = 'width=device-width, initial-scale=1.0, viewport-fit=co
 const VIEWPORT_APP = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover'
 
 function AppContent() {
-  const { user } = useAuth()
+  const { user, authLoading, isConfigured } = useAuth()
   const [appRoute, setAppRoute] = useState(getAppRoute)
   const [appIntroDone, setAppIntroDone] = useState(() => {
     try { return sessionStorage.getItem('lifeproof_app_intro_done') === '1' }
@@ -58,6 +58,19 @@ function AppContent() {
 
 
   if (!inApp) return <MarketingSite />
+
+  if (!isConfigured) {
+    return (
+      <div style={{ padding: '2rem', color: '#fff' }}>
+        <h2>Backend setup required</h2>
+        <p>Add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` to your environment.</p>
+      </div>
+    )
+  }
+
+  if (authLoading) {
+    return <LoadingScreen onComplete={() => {}} />
+  }
 
   const showLogin = appRoute === 'login' || !user
   if (showLogin) return <LoginRegister />

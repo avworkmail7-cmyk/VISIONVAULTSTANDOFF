@@ -21,13 +21,15 @@ const typeClass = {
 }
 
 export default function Dashboard() {
-  const { user } = useAuth()
+  const { user, goldBalance, addGold, removeGold } = useAuth()
   const [aiPrompt, setAiPrompt] = useState('')
   const [aiReply, setAiReply] = useState('')
   const [aiLoading, setAiLoading] = useState(false)
   const [aiError, setAiError] = useState('')
   const [carouselIndex, setCarouselIndex] = useState(0)
   const [touchStart, setTouchStart] = useState(null)
+  const [goldSaving, setGoldSaving] = useState(false)
+  const [goldError, setGoldError] = useState('')
 
   const handleCarouselSwipe = (direction) => {
     setCarouselIndex((i) => {
@@ -69,12 +71,52 @@ export default function Dashboard() {
     }
   }
 
+  const handleGoldChange = async (delta) => {
+    setGoldError('')
+    setGoldSaving(true)
+    try {
+      if (delta > 0) await addGold(delta)
+      else await removeGold(Math.abs(delta))
+    } catch (err) {
+      setGoldError(err?.message || 'Could not update gold right now.')
+    } finally {
+      setGoldSaving(false)
+    }
+  }
+
   return (
     <div className="dashboard">
       <div className="dashboard__welcome">
         <p className="dashboard__welcome-label">DASHBOARD</p>
         <h2 className="dashboard__welcome-title">Welcome{user?.name ? `, ${user.name}` : ''}</h2>
         <p className="dashboard__welcome-sub">Hope you had a great day. Let's recap what happened.</p>
+      </div>
+      <div className="dashboard__ai">
+        <p className="dashboard__ai-label">ACCOUNT GOLD</p>
+        <p className="dashboard__ai-reply">{goldBalance} gold</p>
+        <form
+          className="dashboard__ai-form"
+          onSubmit={(e) => e.preventDefault()}
+          aria-label="Manual gold controls"
+        >
+          <button
+            type="button"
+            className="dashboard__ai-btn"
+            onClick={() => handleGoldChange(10)}
+            disabled={goldSaving}
+          >
+            +10 Win
+          </button>
+          <button
+            type="button"
+            className="dashboard__ai-btn"
+            onClick={() => handleGoldChange(-10)}
+            disabled={goldSaving}
+          >
+            -10 Loss
+          </button>
+        </form>
+        {goldError && <p className="dashboard__ai-error">{goldError}</p>}
       </div>
       {isGroqConfigured() && (
         <div className="dashboard__ai">

@@ -102,6 +102,12 @@
   background: var(--accent-dim);
 }
 
+.login-register__error {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #ff7c7c;
+}
+
 .login-register__toggle {
   display: block;
   width: 100%;
@@ -119,4 +125,11 @@
 
 .login-register__toggle:hover {
   color: var(--accent);
+}
+
+.login-register__submit:disabled,
+.login-register__toggle:disabled,
+.login-register__input:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
