@@ -1,0 +1,71 @@
+.chart-placeholder {
+  height: 200px;
+  padding: 0.75rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-placeholder__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.chart-placeholder__symbol {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.chart-placeholder__change {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.chart-placeholder__change--up {
+  color: #00ff88;
+}
+
+.chart-placeholder__change--down {
+  color: #ff6b6b;
+}
+
+.chart-placeholder__svg-wrap {
+  flex: 1;
+  min-height: 0;
+}
+
+.chart-placeholder__svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.chart-placeholder__line {
+  stroke: var(--accent);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: d 0.2s ease;
+}
+
+.chart-placeholder__fake-trades {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.chart-placeholder__fake-trades span:nth-child(odd) {
+  color: #00ff88;
+}
+
+.chart-placeholder__fake-trades span:nth-child(even) {
+  color: #ff6b6b;
+}

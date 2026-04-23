@@ -1,0 +1,119 @@
+.lpai-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 0;
+}
+
+.lpai-chart__label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.lpai-chart__title {
+  font-size: 1.25rem;
+  margin: 0 0 0.15rem 0;
+}
+
+.lpai-chart__sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem 0;
+}
+
+.lpai-chart__chart-wrap {
+  flex: 1;
+  margin-bottom: 0.5rem;
+}
+
+.lpai-chart__section-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.lpai-chart__card {
+  padding: 0.8rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.lpai-chart__link {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.lpai-chart__link:hover {
+  color: var(--accent-dim);
+}
+
+.lpai-chart__link--sec {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.lpai-chart__link--sec:hover {
+  color: var(--accent-dim);
+}
+
+.lpai-chart__buy-sell {
+  margin-top: 0.6rem;
+  padding: 0.75rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.lpai-chart__buy-sell-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.lpai-chart__buy-sell-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+
+.lpai-chart__buy-sell-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem;
+  background: var(--bg-elevated);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.lpai-chart__buy-sell-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.lpai-chart__buy-sell-value {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.lpai-chart__buy-sell-item--buy .lpai-chart__buy-sell-value {
+  color: #00ff88;
+}
+
+.lpai-chart__buy-sell-item--sell .lpai-chart__buy-sell-value {
+  color: #ff6b6b;
+}

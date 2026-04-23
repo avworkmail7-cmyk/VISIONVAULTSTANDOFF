@@ -1,0 +1,18 @@
+{
+  "name": "Life Proof",
+  "short_name": "Life Proof",
+  "description": "Preserve. Replay. Relive.",
+  "start_url": "/#/login",
+  "display": "standalone",
+  "background_color": "#050508",
+  "theme_color": "#050508",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

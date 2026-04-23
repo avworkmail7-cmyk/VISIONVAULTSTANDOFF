@@ -1,0 +1,48 @@
+.funds {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+
+.funds__inner {
+  max-width: 720px;
+}
+
+.funds__label {
+  display: block;
+  opacity: 0.9;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.funds__title {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.funds__text {
+  margin: 0 0 2rem 0;
+  line-height: 1.75;
+  max-width: 56ch;
+}
+
+.funds__label--sec {
+  display: block;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+.funds__subtitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  color: var(--text);
+}
+
+.funds__block {
+  margin-top: 2rem;
+}
+
+.funds__block .funds__text:last-child {
+  margin-bottom: 0;
+}

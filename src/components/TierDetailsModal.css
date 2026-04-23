@@ -1,0 +1,74 @@
+.v2-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's on top of everything */
+  overflow-y: auto; /* Allow scrolling for long content */
+  padding: 20px; /* Padding around the modal content */
+}
+
+.v2-modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 14px;
+  max-width: 800px; /* Max width for readability */
+  max-height: 90vh; /* Limit height to 90% of viewport height */
+  overflow-y: auto; /* Enable vertical scrolling for content */
+  margin: auto; /* Center the modal vertically and horizontally */
+  width: 100%;
+  position: relative;
+  color: #111827; /* Text color */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.v2-modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.v2-modal-close:hover {
+  color: #111827;
+}
+
+.v2-modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #111827;
+}
+
+.v2-modal-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.v2-modal-content ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1rem;
+}
+
+.v2-modal-content li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.v2-modal-content li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #34d399; /* Green bullet point */
+  font-weight: bold;
+}
